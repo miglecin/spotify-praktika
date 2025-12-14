@@ -13,23 +13,24 @@ Ryšių (1:N, N:N) suplanuotas + (jei pasipildys schema, tai ir sitas)
 
 schema.sql failo sukūrimas + 
 seed_data.sql failo sukūrimas + 
-queries.sql failo parengimas +/- (galima daugiau scenariju ir siaip tobulint) 
-SQL scenarijų užklausų sudarymas +/- (galima daugiau) 
+queries.sql failo parengimas +
+SQL scenarijų užklausų sudarymas +/- (galima daugiau nei 10) 
 
 4. Analizės scenarijų parengimas 
 
 Scenarijų sąrašo sudarymas readme +  
-Scenarijų lentelės sudarymas readme + \
-Kiekvieno scenarijaus SQL užklausų sukūrimas +/- 
+Scenarijų lentelės sudarymas readme + 
+Kiekvieno scenarijaus SQL užklausų sukūrimas +/- (reikia patikrint ar tikrai geros tos uzklausos) 
 Užklausų rezultatų surinkimas (screenshotai / išvestys) 
 
 5. Dokumentacijos rengimas 
 
 Grupės sudėties parengimas ir darbu priskyrimas (5.1) 
-Naudojamų duomenų aprašymas (5.2) (kol kas tik readme) 
-Praktikos darbo tikslo aprašymas (5.3) (kol kas tik readme) 
+Naudojamų duomenų aprašymas (5.2) +
+Praktikos darbo tikslo aprašymas (5.3) +
+ER DIAGRAMA 
 Lentelių aprašymas (strukturinis) 
-Scenarijų aprašymas 
+Scenarijų aprašymas +
 Rezultatų analizė 
 Išvadų parengimas 
 
