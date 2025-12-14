@@ -1,0 +1,40 @@
+1. Projekto parengimas 
+
+Projekto idėjos suformavimas + 
+GitHub repozitorijos sukūrimas + 
+
+2. Duomenų bazės projektavimas 
+
+Lentelių struktūros (schema) suprojektavimas +- (manau galima papildyt) 
+Pirminių ir užsienio raktų nustatymas + 
+Ryšių (1:N, N:N) suplanuotas + (jei pasipildys schema, tai ir sitas) 
+
+3. SQL failų parengimas 
+
+schema.sql failo sukūrimas + 
+seed_data.sql failo sukūrimas + 
+queries.sql failo parengimas +/- (galima daugiau scenariju ir siaip tobulint) 
+SQL scenarijų užklausų sudarymas +/- (galima daugiau) 
+
+4. Analizės scenarijų parengimas 
+
+Scenarijų sąrašo sudarymas readme +  
+Scenarijų lentelės sudarymas readme + \
+Kiekvieno scenarijaus SQL užklausų sukūrimas +/- 
+Užklausų rezultatų surinkimas (screenshotai / išvestys) 
+
+5. Dokumentacijos rengimas 
+
+Grupės sudėties parengimas ir darbu priskyrimas (5.1) 
+Naudojamų duomenų aprašymas (5.2) (kol kas tik readme) 
+Praktikos darbo tikslo aprašymas (5.3) (kol kas tik readme) 
+Lentelių aprašymas (strukturinis) 
+Scenarijų aprašymas 
+Rezultatų analizė 
+Išvadų parengimas 
+
+6. Projekto pateikimas 
+
+Ataskaitos PDF / DOCX parengimas 
+
+pristatymo skaidrių parengimas 
