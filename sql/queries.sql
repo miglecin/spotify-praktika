@@ -14,15 +14,16 @@ GROUP BY t.track_id, t.title
 ORDER BY play_count DESC
 LIMIT 10;
 
--- 1.2. Dainos, kurios PILNAI išklausytos (be skip)
+-- 1.2. Dainos, kurios PILNAI išklausytos (be skip) (TOP 10)
 SELECT t.track_id, t.title, COUNT(*) AS full_plays
 FROM track t
 JOIN listening_event e ON t.track_id = e.track_id
 WHERE e.is_skipped = 0
 GROUP BY t.track_id, t.title
-ORDER BY full_plays DESC;
+ORDER BY full_plays DESC
+LIMIT 10;
 
--- 1.3. Vidutinis klausymo procentas per dainą
+-- 1.3. Vidutinis klausymo procentas per dainą (TOP 10)
 SELECT 
     t.track_id,
     t.title,
@@ -30,7 +31,8 @@ SELECT
 FROM track t
 JOIN listening_event e ON t.track_id = e.track_id
 GROUP BY t.track_id, t.title
-ORDER BY avg_listen_percent DESC;
+ORDER BY avg_listen_percent DESC
+LIMIT 10;
 
 ---------------------------------------------------------
 -- SCENARIJUS 2: Atlikėjų populiarumas
@@ -42,7 +44,8 @@ FROM artist a
 JOIN track_artist ta ON a.artist_id = ta.artist_id
 JOIN listening_event e ON ta.track_id = e.track_id
 GROUP BY a.artist_id, a.name
-ORDER BY total_plays DESC;
+ORDER BY total_plays DESC
+LIMIT 10;
 
 -- 2.2. Atlikėjai pagal mėgstamų track'ų skaičių
 SELECT a.artist_id, a.name, COUNT(DISTINCT lt.user_id) AS unique_likers
@@ -50,7 +53,8 @@ FROM artist a
 JOIN track_artist ta ON a.artist_id = ta.artist_id
 JOIN user_liked_track lt ON ta.track_id = lt.track_id
 GROUP BY a.artist_id, a.name
-ORDER BY unique_likers DESC;
+ORDER BY unique_likers DESC
+LIMIT 10;
 
 -- 2.3. Atlikėjai pagal mėgstamų albumų skaičių
 SELECT a.artist_id, a.name, COUNT(DISTINCT ula.user_id) AS album_likers
@@ -58,7 +62,8 @@ FROM artist a
 JOIN album al ON a.artist_id = al.artist_id
 JOIN user_liked_album ula ON al.album_id = ula.album_id
 GROUP BY a.artist_id, a.name
-ORDER BY album_likers DESC;
+ORDER BY album_likers DESC
+LIMIT 10;
 
 ---------------------------------------------------------
 -- SCENARIJUS 3: Grotaraščiai pagal vartotoją
@@ -74,7 +79,8 @@ FROM playlist p
 LEFT JOIN playlist_track pt ON p.playlist_id = pt.playlist_id
 LEFT JOIN user_account u ON p.owner_user_id = u.user_id
 GROUP BY p.playlist_id, p.name, u.display_name
-ORDER BY track_count DESC;
+ORDER BY track_count DESC
+LIMIT 10;
 
 -- 3.2. Grojaraščiai su daugiausia sekėjų
 SELECT 
@@ -85,7 +91,8 @@ FROM playlist p
 LEFT JOIN user_follow_playlist ufp ON p.playlist_id = ufp.playlist_id
 WHERE p.is_public = 1
 GROUP BY p.playlist_id, p.name
-ORDER BY followers_count DESC;
+ORDER BY followers_count DESC
+LIMIT 10;
 
 -- 3.3. Grojaraščiai pagal įtrauktų dainų trukmę
 SELECT 
@@ -97,7 +104,8 @@ FROM playlist p
 LEFT JOIN playlist_track pt ON p.playlist_id = pt.playlist_id
 LEFT JOIN track t ON pt.track_id = t.track_id
 GROUP BY p.playlist_id, p.name
-ORDER BY total_duration_minutes DESC;
+ORDER BY total_duration_minutes DESC
+LIMIT 10;
 
 ---------------------------------------------------------
 -- SCENARIJUS 4: Skip rate (% praleistų dainų)
@@ -118,7 +126,8 @@ SELECT
 FROM track t
 JOIN listening_event e ON t.track_id = e.track_id
 GROUP BY t.track_id, t.title
-ORDER BY skip_rate_percent DESC;
+ORDER BY skip_rate_percent DESC
+LIMIT 10;
 
 -- 4.3. Atlikėjų skip rate
 SELECT 
@@ -131,7 +140,8 @@ FROM artist a
 JOIN track_artist ta ON a.artist_id = ta.artist_id
 JOIN listening_event e ON ta.track_id = e.track_id
 GROUP BY a.artist_id, a.name
-ORDER BY artist_skip_rate_percent DESC;
+ORDER BY artist_skip_rate_percent DESC
+LIMIT 10;
 
 ---------------------------------------------------------
 -- SCENARIJUS 5: Klausymo įpročiai pagal įrenginį
@@ -145,7 +155,8 @@ SELECT
 FROM listening_session ls
 LEFT JOIN listening_event le ON ls.session_id = le.session_id
 GROUP BY ls.device_type
-ORDER BY total_plays DESC;
+ORDER BY total_plays DESC
+LIMIT 10;
 
 -- 5.2. Vidutinis klausymo laikas pagal įrenginį
 SELECT 
@@ -156,7 +167,8 @@ SELECT
 FROM listening_session ls
 JOIN listening_event le ON ls.session_id = le.session_id
 GROUP BY ls.device_type
-ORDER BY avg_listen_seconds DESC;
+ORDER BY avg_listen_seconds DESC
+LIMIT 10;
 
 -- 5.3. Populiariausi žanrai pagal įrenginį
 SELECT 
@@ -168,7 +180,8 @@ JOIN listening_event le ON ls.session_id = le.session_id
 JOIN track_genre tg ON le.track_id = tg.track_id
 JOIN genre g ON tg.genre_id = g.genre_id
 GROUP BY ls.device_type, g.name
-ORDER BY ls.device_type, play_count DESC;
+ORDER BY ls.device_type, play_count DESC
+LIMIT 10;
 
 ---------------------------------------------------------
 -- SCENARIJUS 6: Dažniausiai klausomi žanrai
@@ -183,7 +196,8 @@ FROM genre g
 JOIN track_genre tg ON g.genre_id = tg.genre_id
 JOIN listening_event le ON tg.track_id = le.track_id
 GROUP BY g.genre_id, g.name
-ORDER BY play_count DESC;
+ORDER BY play_count DESC
+LIMIT 10;
 
 -- 6.2. Kiek skirtingų vartotojų klausė kiekvieno žanro
 SELECT 
@@ -195,7 +209,8 @@ JOIN track_genre tg ON g.genre_id = tg.genre_id
 JOIN listening_event le ON tg.track_id = le.track_id
 JOIN listening_session ls ON le.session_id = ls.session_id
 GROUP BY g.genre_id, g.name
-ORDER BY unique_users DESC;
+ORDER BY unique_users DESC
+LIMIT 10;
 
 -- 6.3. Žanrų skip rate analizė
 SELECT 
@@ -208,7 +223,8 @@ FROM genre g
 JOIN track_genre tg ON g.genre_id = tg.genre_id
 JOIN listening_event le ON tg.track_id = le.track_id
 GROUP BY g.genre_id, g.name
-ORDER BY genre_skip_rate_percent DESC;
+ORDER BY genre_skip_rate_percent DESC
+LIMIT 10;
 
 ---------------------------------------------------------
 -- SCENARIJUS 7: Mėgstami kūriniai ir albumai
@@ -321,7 +337,8 @@ JOIN track_artist ta ON a.artist_id = ta.artist_id
 JOIN listening_event le ON ta.track_id = le.track_id
 WHERE YEAR(le.started_at) = 2024
 GROUP BY a.artist_id, a.name, WEEK(le.started_at, 1)
-ORDER BY WEEK(le.started_at, 1) DESC, play_count DESC;
+ORDER BY WEEK(le.started_at, 1) DESC, play_count DESC
+LIMIT 10;
 
 -- 9.3. Žanrų populiarumas per dieną
 SELECT 
@@ -332,7 +349,8 @@ FROM listening_event le
 JOIN track_genre tg ON le.track_id = tg.track_id
 JOIN genre g ON tg.genre_id = g.genre_id
 GROUP BY DATE(le.started_at), g.name
-ORDER BY DATE(le.started_at) DESC, play_count DESC;
+ORDER BY DATE(le.started_at) DESC, play_count DESC
+LIMIT 10;
 
 ---------------------------------------------------------
 -- SCENARIJUS 10: Aktyviausi vartotojai pagal laiką
@@ -348,7 +366,8 @@ FROM user_account u
 JOIN listening_session ls ON u.user_id = ls.user_id
 JOIN listening_event le ON ls.session_id = le.session_id
 GROUP BY u.user_id, u.display_name
-ORDER BY total_listen_minutes DESC;
+ORDER BY total_listen_minutes DESC
+LIMIT 10;
 
 -- 10.2. Aktyviausios sesijos pagal vartotoją
 SELECT 
@@ -360,7 +379,8 @@ FROM user_account u
 JOIN listening_session ls ON u.user_id = ls.user_id
 LEFT JOIN listening_event le ON ls.session_id = le.session_id
 GROUP BY u.user_id, u.display_name
-ORDER BY total_sessions DESC;
+ORDER BY total_sessions DESC
+LIMIT 10;
 
 -- 10.3. Vartotojų pradžios laiko pasiskirstymas
 SELECT 
