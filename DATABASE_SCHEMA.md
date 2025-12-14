@@ -337,7 +337,7 @@ track
 
 ---
 
-## 5. Užklausos (30 analitinių)
+## 6. Užklausos (30 analitinių)
 
 ### **10 scenarijai, po 3 užklausas kiekvienam:**
 
@@ -356,7 +356,7 @@ Visos užklausos sugrąžina rezultatus su **eilutės numeriu** (`row_no`) pirma
 
 ---
 
-## 6. Failų Struktūra
+## 7. Failų Struktūra
 
 ```
 spotify-praktika/
@@ -372,7 +372,7 @@ spotify-praktika/
 
 ---
 
-## 7. Naudojimas
+## 8. Naudojimas
 
 ### **1. Sukurti duomenų bazę:**
 ```sql
