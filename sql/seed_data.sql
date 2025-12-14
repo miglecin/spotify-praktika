@@ -80,7 +80,7 @@ INSERT INTO album (album_id, artist_id, title, release_date, total_tracks, album
 (5, 5, 'Future Nostalgia', '2020-11-27', 11, 'album'),
 (6, 6, '÷', '2017-03-03', 12, 'album'),
 (7, 7, 'AM', '2013-09-10', 12, 'album'),
-(8, 8, 'Hollywood\'s Bleeding', '2019-09-06', 12, 'album'),
+(8, 8, 'Hollywood\s Bleeding', '2019-09-06', 12, 'album'),
 (9, 9, 'Astroworld', '2018-08-03', 17, 'album'),
 (10, 10, 'Positions', '2020-10-30', 14, 'album');
 
@@ -100,7 +100,7 @@ INSERT INTO track (track_id, album_id, title, duration_seconds, track_number, ex
 (9, 8, 'Congratulations', 218, 6, 1),
 (10, 9, 'STARGAZING', 186, 1, 1),
 (11, 10, 'thank u, next', 209, 5, 0),
-(12, 1, 'It\'s Time', 179, 4, 0),
+(12, 1, 'It\s Time', 179, 4, 0),
 (13, 2, 'when we all fall asleep, where do we go?', 156, 1, 0),
 (14, 3, 'Heartless', 210, 2, 0),
 (15, 5, 'Levitating', 203, 6, 0),
@@ -179,7 +179,13 @@ INSERT INTO track_genre (track_id, genre_id) VALUES
 
 INSERT INTO playlist (playlist_id, owner_user_id, name, description, is_public, created_at) VALUES
 (1, 1, 'Morning Vibes', 'Raminančios dainos rytui', 1, NOW()),
-(2, 2, 'Workout', 'Intensyvios treniruočių dainos', 1, NOW());
+(2, 2, 'Workout', 'Intensyvios treniruočių dainos', 1, NOW()),
+(3, 3, 'Rock Classics', 'Geriausi rock kūriniai', 1, NOW()),
+(4, 4, 'Deep Focus', 'Susikaupimui skirtinės dainos', 0, NOW()),
+(5, 5, 'Party Hits', 'Klubų ir vakarėlių hitai', 1, NOW()),
+(6, 6, 'Chill Lounge', 'Atsipalaidavimui skirtos dainos', 1, NOW()),
+(7, 7, 'Indie Discovery', 'Alternatyvinės ir indie dainos', 1, NOW()),
+(8, 8, 'Late Night Drive', 'Nakties važiavimui', 0, NOW());
 
 -- -------------------------------
 -- PLAYLIST TRACKS
@@ -191,7 +197,26 @@ INSERT INTO playlist_track (playlist_id, track_id, position, added_by_user_id, a
 (1, 4, 3, 1, NOW()),
 (2, 1, 1, 2, NOW()),
 (2, 4, 2, 2, NOW()),
-(2, 5, 3, 2, NOW());
+(2, 5, 3, 2, NOW()),
+(3, 8, 1, 3, NOW()),
+(3, 7, 2, 3, NOW()),
+(3, 9, 3, 3, NOW()),
+(4, 6, 1, 4, NOW()),
+(4, 10, 2, 4, NOW()),
+(4, 2, 3, 4, NOW()),
+(5, 1, 1, 5, NOW()),
+(5, 3, 2, 5, NOW()),
+(5, 5, 3, 5, NOW()),
+(5, 9, 4, 5, NOW()),
+(6, 4, 1, 6, NOW()),
+(6, 6, 2, 6, NOW()),
+(6, 7, 3, 6, NOW()),
+(7, 8, 1, 7, NOW()),
+(7, 2, 2, 7, NOW()),
+(7, 10, 3, 7, NOW()),
+(8, 1, 1, 8, NOW()),
+(8, 4, 2, 8, NOW()),
+(8, 9, 3, 8, NOW());
 
 -- -------------------------------
 -- LISTENING SESSIONS
@@ -737,9 +762,24 @@ INSERT INTO user_follow_playlist (user_id, playlist_id, followed_at) VALUES
 (3, 1, NOW()),
 (3, 2, NOW()),
 (4, 1, NOW()),
+(4, 3, NOW()),
 (5, 2, NOW()),
+(5, 5, NOW()),
 (6, 1, NOW()),
+(6, 6, NOW()),
 (7, 2, NOW()),
+(7, 3, NOW()),
 (8, 1, NOW()),
+(8, 4, NOW()),
 (9, 1, NOW()),
-(10, 2, NOW());
+(9, 5, NOW()),
+(10, 2, NOW()),
+(10, 6, NOW()),
+(1, 3, NOW()),
+(2, 7, NOW()),
+(3, 8, NOW()),
+(4, 6, NOW()),
+(5, 7, NOW()),
+(6, 4, NOW()),
+(7, 5, NOW()),
+(8, 6, NOW());

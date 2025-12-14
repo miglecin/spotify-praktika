@@ -202,7 +202,7 @@ FROM (
 ORDER BY avg_listen_seconds DESC;
 
 -- 5.3. Populiariausi žanrai pagal įrenginį
-SELECT ROW_NUMBER() OVER (ORDER BY ls.device_type, play_count DESC) AS row_no, q.*
+SELECT ROW_NUMBER() OVER (ORDER BY q.device_type, q.play_count DESC) AS row_no, q.*
 FROM (
     SELECT 
             ls.device_type,
@@ -214,7 +214,7 @@ FROM (
     JOIN genre g ON tg.genre_id = g.genre_id
     GROUP BY ls.device_type, g.name
 ) AS q
-ORDER BY ls.device_type, play_count DESC;
+ORDER BY q.device_type, q.play_count DESC;
 
 ---------------------------------------------------------
 -- SCENARIJUS 6: Dažniausiai klausomi žanrai
